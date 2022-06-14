@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Ducky Drip</title>
+
+
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div th:include="user/template_user.html::header " th:if="${sessionHome==null}" />
+
+	<div th:include="user/template_user.html::header-user" th:unless="${sessionHome==null}" />
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Jumbotron Header -->
+		<header class="jumbotron my-4">
+			<h1 class="display-3">Bienvenido a Ducky Drip</h1>
+			<p class="lead">Tu tienda de productos en Línea</p>
+		</header>
+
+		<!-- Page Features -->
+		<div class="row text-center d-flex justify-content-between">
+
+
+
+
+			<div class="col-lg-3 col-md-6 mb-4 ">
+				<div class="card h-100">
+					<a th:href="@{/men}">
+						<img class="card-img-top" src="/images/men_logo.jpg" alt="men"></a>
+					<div class="card-body">
+						<p class="card-text" th:text="'Hombres'"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6 mb-4 ">
+				<div class="card h-100">
+					<a th:href="@{/kids}">
+						<img class="card-img-top" src="/images/kids_logo.jpg" alt="kids"></a>
+					<div class="card-body">
+						<p class="card-text" th:text="'Niños'"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6 mb-4 ">
+				<div class="card h-100">
+					<a th:href="@{/women}">
+						<img class="card-img-top" src="/images/women_logo.jpg" alt="women"></a>
+					<div class="card-body">
+						<p class="card-text" th:text="'Mujeres'"></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<div th:include="user/template_user.html::footer" />
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

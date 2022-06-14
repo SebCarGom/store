@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Ducky Drip</title>
+
+
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div th:include="user/template_user.html::header-cart" />
+
+	<!-- Page Content -->
+	<div class="container">
+
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">
+			Ducky Drip <small>Carrito</small>
+		</h1>
+
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+			<li class="breadcrumb-item active">Carrito</li>
+		</ol>
+
+		<!-- Blog Post -->
+		<div class="card mb-4">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-9">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Producto</th>
+									<th scope="col">Precio</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Total</th>
+									<th scope="col">Acción</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="d_order:${cart}">
+									<td th:text="${d_order.name}"></td>
+									<td th:text="${d_order.price} + €"></td>
+									<td th:text="${d_order.quantity}"></td>
+									<td th:text="${d_order.total}  + €"></td>
+									<td><a th:href="@{/delete/cart/{id} (id=${d_order.product.id})}"
+											class="btn btn-danger">Quitar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="col-lg-3">
+						<h2 class="card-title">SUBTOTAL</h2>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<h5 th:text="${order.total}  + €"></h5>
+							</li>
+						</ul>
+						<form th:action="@{/order}" method="post">
+							<div class="form-group">
+								<label for="nombres">Pedido a Domicilio:</label>
+								<select id="delivery" name="delivery">
+									<option id="1" th:value="true" th:text="Si"></option>
+									<option id="1" th:value="false" th:text="No"></option>
+								</select>
+							</div>
+							<div>
+								<button type="submit" class="btn btn-success">Ver Orden</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+
+		<div th:include="user/template_user.html::footer" />
+
+		<!-- Bootstrap core JavaScript -->
+		<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+		<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
